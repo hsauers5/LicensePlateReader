@@ -2,17 +2,25 @@ import cv2
 import sys
 from openalpr import Alpr
 
-alpr = Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data")
+alpr = Alpr("us", "openalpr/config/openalpr.conf.defaults", "openalpr/runtime_data")
 if not alpr.is_loaded():
     print("Error loading OpenALPR")
     sys.exit(1)
 
 alpr.set_top_n(20)
-alpr.set_default_region("md")
+alpr.set_default_region("fl")
 
-video = cv2.VideoCapture()
+'''
+video = cv2.VideoCapture(0)
+val, frame = video.read()
+results = alpr.recognize_ndarray(frame)
+'''
+img = cv2.imread("img3.jpg")
+frame = img
+results = alpr.recognize_ndarray(frame)
 
-results = alpr.recognize_ndarray(video)
+print(results)
+
 i = 0
 for plate in results['results']:
     i += 1
