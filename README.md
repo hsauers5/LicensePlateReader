@@ -6,7 +6,8 @@ git clone https://github.com/hsauers5/LicensePlateReader
 cd LicensePlateReader
 chmod +x setup.sh
 ./setup.sh
-gunicorn --bind 0.0.0.0:5000 -w 8 wsgi:app
+# gunicorn --bind 0.0.0.0:5000 -w 8 webapp:app
+python3 webapp.py
 ```
 
 Alternately, 
@@ -28,5 +29,5 @@ sudo make install
 cd ../../
 cd src/bindings/python/
 sudo python3 setup.py install
-gunicorn --bind 0.0.0.0:5000 -w 8 wsgi:app
+python3 webapp.py
 ```
