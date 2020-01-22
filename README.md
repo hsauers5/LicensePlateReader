@@ -1,6 +1,7 @@
 # LicensePlateReader
+###A Web API to read license plates from an image. 
 Requirements: Ubuntu 18.04, Python 3
-####Setup:
+##Setup:
 ```
 git clone https://github.com/hsauers5/LicensePlateReader
 cd LicensePlateReader
