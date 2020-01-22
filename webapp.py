@@ -16,8 +16,11 @@ alpr.set_default_region("fl")
 # return the most likely plate
 def read_plate(nparray):
     results = alpr.recognize_ndarray(nparray)
-    plate = results['results'][0]
-    return plate
+    if len(results['results']) != 0:
+        plate = results['results'][0]
+        return plate
+    else:
+        abort(Response(response='Could not find a license plate.', status=400))
 
 
 app = Flask(__name__, static_folder='.', static_url_path='', template_folder='')
